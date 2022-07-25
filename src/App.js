@@ -4,12 +4,14 @@ import { Cat } from 'react-kawaii';
 import { MOODS } from './mood';
 
 function App() {
+  const dispatch = useDispatch()
   const currentMood = "angry"
   const handleMoodUpdate = (e) => {
     console.log(e)
   }
   return (
     <div className="App">
+    <h1>cat</h1>
     <Cat size={320} mood={currentMood} color="#596681" />
     <section>
       {Object.values(MOODS).map((mood) => (
