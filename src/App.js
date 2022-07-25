@@ -1,56 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+import { Cat } from 'react-kawaii';
+import { MOODS } from './mood';
 
 function App() {
+  const dispatch = useDispatch()
+  const currentMood = "angry"
+  const handleMoodUpdate = (e) => {
+    console.log(e)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <h1>cat</h1>
+    <Cat size={320} mood={currentMood} color="#596681" />
+    <section>
+      {Object.values(MOODS).map((mood) => (
+        <button 
+          data-type={mood}
+          key={mood}
+          className={`${currentMood === mood ? "selected" : ""}`}
+          onClick={handleMoodUpdate}
+        >
+        {mood}
+        </button>
+      ))}
+    </section>
     </div>
   );
 }
