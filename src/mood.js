@@ -19,7 +19,7 @@ export const updateCatMood = (payload) => ({
 });
 
 // reducer 
-export const reducer = (state = INITIAL_STATE, action) => {
+export const moodReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case UPDAPTE_MOOD:
             return {...state, mood: action.payload}; 

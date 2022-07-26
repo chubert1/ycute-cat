@@ -2,13 +2,17 @@ import React from 'react';
 import './App.css';
 import { Cat } from 'react-kawaii';
 import { MOODS } from './mood';
+import { updateCatMood, selectMood } from './features/mood/moodSlice';
+import {useDispatch, useSelector} from 'react-redux'
 
 function App() {
-  const dispatch = useDispatch()
-  const currentMood = "angry"
+  const dispatch = useDispatch();
+  const currentMood = useSelector(selectMood)
   const handleMoodUpdate = (e) => {
-    console.log(e)
+   const mood = e.target.value;
+   dispatch(updateCatMood(mood))
   }
+  console.log(updateCatMood.toString())
   return (
     <div className="App">
     <h1>cat</h1>
@@ -16,7 +20,7 @@ function App() {
     <section>
       {Object.values(MOODS).map((mood) => (
         <button 
-          data-type={mood}
+          value={mood}
           key={mood}
           className={`${currentMood === mood ? "selected" : ""}`}
           onClick={handleMoodUpdate}
@@ -24,6 +28,9 @@ function App() {
         {mood}
         </button>
       ))}
+    </section>
+    <section>
+    learn react
     </section>
     </div>
   );
